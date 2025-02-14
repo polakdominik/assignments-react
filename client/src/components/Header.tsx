@@ -7,6 +7,7 @@ const StyledDiv = styled.header`
 
     button {
         all: unset;
+        margin-left: auto;
 
         width: 25px;
         height: 25px;
