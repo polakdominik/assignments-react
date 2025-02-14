@@ -7,10 +7,22 @@ import { Checkbox } from "./Checkbox";
 const StyledDiv = styled.div`
     display: flex;
     align-items: center;
+    gap: 1rem;
+
+    > :last-child {
+        margin-left: auto;
+    }
 `;
 
 const Label = styled.label`
-    margin-left: 15px;
+    flex: 1;
+`;
+
+const Button = styled.button`
+    margin-left: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    height: 25px;
 `;
 
 export type LiteeItemProp = {
@@ -28,12 +40,14 @@ export const ListItem = (props: LiteeItemProp) => {
         <StyledDiv>
             <Checkbox checked={isDone} onCheckedChange={onItemDoneToggle} />
             <Label>{label}</Label>
-            <button>
-                <TrashIcon />
-            </button>
-            <button onClick={() => onItemDelete()}>
-                <Pencil1Icon />
-            </button>
+            <div>
+                <Button>
+                    <TrashIcon />
+                </Button>
+                <Button onClick={() => onItemDelete()}>
+                    <Pencil1Icon />
+                </Button>
+            </div>
         </StyledDiv>
     );
 };
