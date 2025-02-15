@@ -85,7 +85,7 @@ _Fix all other bugs and visual imperfections you find._
 
 #### Stories (optional tasks)
 
--   [ ] **SB1**: Add a story/stories for the `Layout` component.
+-   [x] **SB1**: Add a story/stories for the `Layout` component.
 -   [ ] **SB2**: Add stories showing available `Button` variants.
 -   [ ] **SB3**: Add a story showcasing the `ListItem` actions visibility change on hover (implemented in _"UI3"_).
 
