@@ -80,6 +80,20 @@ export function useTodos() {
         }
     }
 
+    const deleteTodo = async (id: number) => {
+        try {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/items/${id}`, { method: 'DELETE' })
+
+            if (!res.ok) {
+                throw new Error('http error' + res.status);
+            }
+        } catch (e) {
+            console.error(e);
+        } finally {
+            fetchData();
+        }
+    }
+
     useEffect(() => {
         fetchData();
     }, []);
@@ -91,5 +105,6 @@ export function useTodos() {
         createTodo,
         updateTodo,
         updateTodoStatus,
+        deleteTodo,
     }
 }

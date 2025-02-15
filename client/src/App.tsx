@@ -8,7 +8,7 @@ import { ListItem } from "./components/ListItem";
 import { useTodos } from "./hooks/useTodos";
 
 export const App = () => {
-    const { todos, loading, hasError, createTodo, updateTodo, updateTodoStatus } = useTodos();
+    const { todos, loading, hasError, createTodo, updateTodo, updateTodoStatus, deleteTodo } = useTodos();
 
     return (
         <ThemeProvider>
@@ -26,7 +26,7 @@ export const App = () => {
                                             <ListItem
                                                 key={todo.id}
                                                 label={todo.label}
-                                                onItemDelete={() => {}}
+                                                onItemDelete={() => deleteTodo(todo.id)}
                                                 isDone={todo.isDone}
                                                 onItemDoneToggle={(isDone) => updateTodoStatus(todo.id, isDone)}
                                                 onItemLabelEdit={(label) => updateTodo(todo.id, label)}
