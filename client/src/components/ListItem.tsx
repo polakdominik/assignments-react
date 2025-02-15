@@ -1,8 +1,8 @@
-import { Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Checkbox } from "./Checkbox";
 import { Form } from "./form";
+import { Button } from "./Button";
 
 const StyledDiv = styled.div`
     display: flex;
@@ -16,13 +16,6 @@ const StyledDiv = styled.div`
 
 const Label = styled.label`
     flex: 1;
-`;
-
-const Button = styled.button`
-    margin-left: 0.5rem;
-    display: inline-flex;
-    align-items: center;
-    height: 25px;
 `;
 
 export type LiteeItemProp = {
@@ -55,12 +48,8 @@ export const ListItem = (props: LiteeItemProp) => {
             }
 
             <div>
-                <Button onClick={() => onItemDelete()}>
-                    <TrashIcon />
-                </Button>
-                <Button onClick={() => setFormActive(true)}>
-                    <Pencil1Icon />
-                </Button>
+                <Button onClick={() => onItemDelete()} icon="trash"/>
+                <Button onClick={() => setFormActive(true)} icon="pencil1"/>
             </div>
         </StyledDiv>
     );

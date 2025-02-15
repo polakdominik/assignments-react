@@ -1,7 +1,7 @@
-import { PlusIcon } from "@radix-ui/react-icons";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Form } from "./form";
+import { Button } from "./Button";
 
 const StyledDiv = styled.header`
     display: flex;
@@ -45,7 +45,7 @@ export const Header = (props: HeaderProps) => {
             {
                 formActive
                     ? <Form initialValue={''} onCancel={() => setFormActive(false)} onSubmit={onFormSubmit} />
-                    : <button onClick={() => setFormActive(true)}><PlusIcon /></button>
+                    : <Button icon="plus" onClick={() => setFormActive(true)}/>
             }
         </StyledDiv>
     );
