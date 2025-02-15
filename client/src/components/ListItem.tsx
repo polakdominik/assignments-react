@@ -4,13 +4,18 @@ import { Checkbox } from "./Checkbox";
 import { Form } from "./form";
 import { Button } from "./Button";
 
+const StyledActions = styled.div`
+    margin-left: auto;
+    visibility: hidden;
+`;
+
 const StyledDiv = styled.div`
     display: flex;
     align-items: center;
     gap: 1rem;
-
-    > :last-child {
-        margin-left: auto;
+    
+    &:hover ${StyledActions} {
+        visibility: visible;
     }
 `;
 
@@ -47,10 +52,10 @@ export const ListItem = (props: LiteeItemProp) => {
                     : <Label>{label}</Label>
             }
 
-            <div>
+            <StyledActions>
                 <Button onClick={() => onItemDelete()} icon="trash"/>
                 <Button onClick={() => setFormActive(true)} icon="pencil1"/>
-            </div>
+            </StyledActions>
         </StyledDiv>
     );
 };
