@@ -27,13 +27,16 @@
     {
       "label": "test",
       "createdAt": 1739544277186,
-      "id": 6
+      "id": 6,
+      "isDone": true,
+      "finishedAt": 1739635675359
     },
     {
       "label": "test2",
       "createdAt": 1739544279617,
       "id": 7,
-      "isDone": true
+      "isDone": true,
+      "finishedAt": 1739635690172
     }
   ]
 }

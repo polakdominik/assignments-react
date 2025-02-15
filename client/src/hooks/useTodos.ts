@@ -77,7 +77,7 @@ export function useTodos() {
 
     const updateTodoStatus = async (id: number, isDone: boolean) => {
         try {
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/items/${id}`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/items/${id}/mark-done`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ isDone }),

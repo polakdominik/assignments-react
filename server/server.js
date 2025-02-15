@@ -13,6 +13,27 @@ server.use((req, res, next) => {
     next();
 });
 
+/*
+* custom endpoint
+ */
+server.patch('/items/:id/mark-done', (req, res) => {
+    // most challenging so far, digging trough json-server docs and source to figure custom usage
+    const item = router.db.get('items')
+        .find({ id: +req.params.id });
+
+    if (!item.value()) {
+        res.status(404).json({ message: 'not found', code: 'NOT_FOUND' });
+    }
+
+    const isDone = Boolean(req.body.isDone);
+
+    item
+        .assign({ isDone, finishedAt: isDone ? Date.now() : undefined })
+        .write()
+
+    res.json(item)
+});
+
 // Use default router
 server.use(router);
 server.listen(3000, () => {
