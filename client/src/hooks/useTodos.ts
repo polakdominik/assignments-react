@@ -44,6 +44,24 @@ export function useTodos() {
         }
     };
 
+    const updateTodo = async (id: number, label: string) => {
+        try {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/items/${id}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ label }),
+            });
+
+            if (!res.ok) {
+                throw new Error('http error' + res.status);
+            }
+        } catch (e) {
+            console.error(e);
+        } finally {
+            fetchData();
+        }
+    }
+
     useEffect(() => {
         fetchData();
     }, []);
@@ -53,5 +71,6 @@ export function useTodos() {
         loading,
         hasError,
         createTodo,
+        updateTodo,
     }
 }

@@ -8,7 +8,7 @@ import { ListItem } from "./components/ListItem";
 import { useTodos } from "./hooks/useTodos";
 
 export const App = () => {
-    const { todos, loading, hasError, createTodo } = useTodos();
+    const { todos, loading, hasError, createTodo, updateTodo } = useTodos();
 
     return (
         <ThemeProvider>
@@ -29,7 +29,7 @@ export const App = () => {
                                                 onItemDelete={() => {}}
                                                 isDone={todo.isDone}
                                                 onItemDoneToggle={() => {}}
-                                                onItemLabelEdit={() => {}}
+                                                onItemLabelEdit={(label) => updateTodo(todo.id, label)}
                                             />)
                                     }
                                 </List>
