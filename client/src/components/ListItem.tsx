@@ -6,13 +6,16 @@ import { Button } from "./Button";
 
 const StyledActions = styled.div`
     margin-left: auto;
-    visibility: hidden;
 `;
 
-const StyledDiv = styled.div`
+const StyledDiv = styled.div<{ hover?: boolean }>`
     display: flex;
     align-items: center;
     gap: 1rem;
+
+    ${StyledActions} {
+        visibility: ${props => props.hover ? 'visible' : 'hidden'};
+    }
     
     &:hover ${StyledActions} {
         visibility: visible;
@@ -29,6 +32,7 @@ export type LiteeItemProp = {
     onItemLabelEdit: (label: string) => void;
     onItemDoneToggle: (isDone: boolean) => void;
     onItemDelete: () => void;
+    hover?: boolean;
 };
 
 export const ListItem = (props: LiteeItemProp) => {
@@ -41,7 +45,7 @@ export const ListItem = (props: LiteeItemProp) => {
     }
 
     return (
-        <StyledDiv>
+        <StyledDiv hover={props.hover}>
             <Checkbox checked={isDone} onCheckedChange={onItemDoneToggle} />
             {
                 formActive

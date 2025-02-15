@@ -23,3 +23,10 @@ export const Done: Story = {
         isDone: true,
     },
 };
+
+export const Hover: Story = {
+    args: {
+        ...ToDo.args,
+        hover: true,
+    },
+};
