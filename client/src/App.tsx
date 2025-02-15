@@ -8,7 +8,16 @@ import { ListItem } from "./components/ListItem";
 import { useTodos } from "./hooks/useTodos";
 
 export const App = () => {
-    const { todos, loading, hasError, createTodo, updateTodo, updateTodoStatus, deleteTodo } = useTodos();
+    const {
+        todos,
+        doneTodos,
+        loading,
+        hasError,
+        createTodo,
+        updateTodo,
+        updateTodoStatus,
+        deleteTodo,
+    } = useTodos();
 
     return (
         <ThemeProvider>
@@ -34,7 +43,7 @@ export const App = () => {
                                     }
                                 </List>
                     }
-                    <Footer />
+                    <Footer doneItems={doneTodos.length} todoItems={todos.length - doneTodos.length}/>
                 </Layout>
             </Container>
         </ThemeProvider>

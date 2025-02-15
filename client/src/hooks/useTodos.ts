@@ -13,6 +13,11 @@ export function useTodos() {
         [todos],
     );
 
+    const doneTodos = useMemo(() =>
+            todos.filter(todo => todo.isDone),
+        [todos],
+    );
+
     const fetchData = async () => {
         try {
             setLoading(true);
@@ -108,6 +113,7 @@ export function useTodos() {
 
     return {
         todos: sortedTodos,
+        doneTodos,
         loading,
         hasError,
         createTodo,
