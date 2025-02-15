@@ -27,7 +27,7 @@ export const App = () => {
                                                 key={todo.id}
                                                 label={todo.label}
                                                 onItemDelete={() => deleteTodo(todo.id)}
-                                                isDone={todo.isDone}
+                                                isDone={todo.isDone ?? false}
                                                 onItemDoneToggle={(isDone) => updateTodoStatus(todo.id, isDone)}
                                                 onItemLabelEdit={(label) => updateTodo(todo.id, label)}
                                             />)

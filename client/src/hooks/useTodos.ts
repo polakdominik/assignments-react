@@ -1,9 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export function useTodos() {
-    const [todos, setTodos] = useState<{ id: number, createdAt: number, isDone: boolean, label: string }[]>([])
+    const [todos, setTodos] = useState<{ id: number, createdAt: number, isDone?: boolean, label: string }[]>([])
     const [hasError, setHasError] = useState<boolean>(false)
     const [loading, setLoading] = useState<boolean>(false)
+
+    const sortedTodos = useMemo(() => todos
+            // isDone can be undefined and +undefined is NaN, so we need conversion to boolean
+            // also explicit conversion isn't necessary but TS does not allow arithmetics with booleans
+            .sort((a, b) => +Boolean(a.isDone) - +Boolean(b.isDone) || b.createdAt - a.createdAt)
+        ,
+        [todos],
+    );
 
     const fetchData = async () => {
         try {
@@ -99,7 +107,7 @@ export function useTodos() {
     }, []);
 
     return {
-        todos,
+        todos: sortedTodos,
         loading,
         hasError,
         createTodo,
